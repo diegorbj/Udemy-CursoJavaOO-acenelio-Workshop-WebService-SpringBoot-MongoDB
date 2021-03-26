@@ -1,0 +1,25 @@
+package com.myhouse.socialnetwork.dto;
+
+import com.myhouse.socialnetwork.domain.User;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
+
+@Getter
+@Setter
+@NoArgsConstructor
+public class AuthorDTO implements Serializable {
+
+    private final static long serialVersionUID = 1L;
+
+    private String id;
+    private String name;
+
+    public AuthorDTO(User obj) {
+        this.id = obj.getId();
+        this.name = obj.getName();
+    }
+
+}

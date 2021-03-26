@@ -20,7 +20,7 @@ public class PostDTO implements Serializable {
     private Date date;
     private String title;
     private String body;
-    private User author = new User();
+    private AuthorDTO author;
 
     public PostDTO(Post obj) {
         this.id = obj.getId();
