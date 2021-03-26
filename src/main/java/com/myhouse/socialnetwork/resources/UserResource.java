@@ -1,5 +1,6 @@
 package com.myhouse.socialnetwork.resources;
 
+import com.myhouse.socialnetwork.domain.Post;
 import com.myhouse.socialnetwork.domain.User;
 import com.myhouse.socialnetwork.dto.UserDTO;
 import com.myhouse.socialnetwork.services.UserServices;
@@ -53,6 +54,12 @@ public class UserResource {
         User newObj = _service.fromDTO(obj);
         newObj = _service.update(id, newObj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable("id") String id) {
+        User obj = _service.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
 }
