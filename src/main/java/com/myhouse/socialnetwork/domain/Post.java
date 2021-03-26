@@ -1,14 +1,13 @@
 package com.myhouse.socialnetwork.domain;
 
 import com.myhouse.socialnetwork.dto.AuthorDTO;
+import com.myhouse.socialnetwork.dto.CommentDTO;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @ToString
 @NoArgsConstructor
@@ -41,7 +40,8 @@ public class Post implements Serializable {
     private AuthorDTO author;
 
     @Getter
-    private Set<Comment> comments = new HashSet<>();
+    @Setter
+    private List<CommentDTO> comments = new ArrayList<>();
 
     public Post(String id, Date date, String title, String body, AuthorDTO author) {
         this.id = id;
