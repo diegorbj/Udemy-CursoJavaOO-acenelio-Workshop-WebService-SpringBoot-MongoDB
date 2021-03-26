@@ -2,6 +2,7 @@ package com.myhouse.socialnetwork.resources;
 
 import com.myhouse.socialnetwork.domain.Post;
 import com.myhouse.socialnetwork.dto.PostDTO;
+import com.myhouse.socialnetwork.resources.util.URL;
 import com.myhouse.socialnetwork.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,14 @@ public class PostResource {
         Post obj = _service.findById(id);
         PostDTO objDTO = new PostDTO(obj);
         return ResponseEntity.ok().body(objDTO);
+    }
+
+    @RequestMapping(value = "/titlesearch", method = RequestMethod.GET)
+    public ResponseEntity<List<PostDTO>> findByTitle(@RequestParam(value="text", defaultValue = "") String text) {
+        text = URL.decodeParam(text);
+        List<Post> list = _service.findByTitle(text);
+        List<PostDTO> listDTO = list.stream().map(x -> new PostDTO(x)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(listDTO);
     }
 
 //    @RequestMapping(method = RequestMethod.POST)

@@ -25,6 +25,10 @@ public class PostService {
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
     }
 
+    public List<Post> findByTitle(String text) {
+        return _repository.findByTitleContainingIgnoreCase(text);
+    }
+
     public Post insert(Post obj) {
         return _repository.insert(obj);
     }
@@ -50,4 +54,5 @@ public class PostService {
         to.setBody(from.getBody());
         to.setAuthor(from.getAuthor());
     }
+    
 }
