@@ -26,7 +26,7 @@ public class PostService {
     }
 
     public List<Post> findByTitle(String text) {
-        return _repository.findByTitleContainingIgnoreCase(text);
+        return _repository.findByTitle(text);
     }
 
     public Post insert(Post obj) {
@@ -54,5 +54,5 @@ public class PostService {
         to.setBody(from.getBody());
         to.setAuthor(from.getAuthor());
     }
-    
+
 }
