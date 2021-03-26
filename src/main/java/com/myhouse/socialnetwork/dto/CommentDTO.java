@@ -13,16 +13,16 @@ import java.util.Date;
 @NoArgsConstructor
 public class CommentDTO implements Serializable {
 
-    private final static long servialVersionUID = 1L;
+    private final static long serialVersionUID = 1L;
 
-    private String id;
+    private String text;
     private Date date;
     private AuthorDTO author;
 
-    public CommentDTO(String id, Date date, AuthorDTO author) {
-        this.id = id;
+    public CommentDTO(String text, Date date, AuthorDTO author) {
+        this.text = text;
         this.date = date;
         this.author = author;
     }
-    
+
 }
