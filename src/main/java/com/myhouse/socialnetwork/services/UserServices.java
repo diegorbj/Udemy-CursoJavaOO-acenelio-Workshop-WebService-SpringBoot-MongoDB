@@ -1,6 +1,7 @@
 package com.myhouse.socialnetwork.services;
 
 import com.myhouse.socialnetwork.domain.User;
+import com.myhouse.socialnetwork.dto.UserDTO;
 import com.myhouse.socialnetwork.repository.UserRepository;
 import com.myhouse.socialnetwork.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,13 @@ public class UserServices {
         Optional<User> obj = _repository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Object not found"));
     }
-    
+
+    public User insert(User obj) {
+        return _repository.insert(obj);
+    }
+
+    public User fromDTO(UserDTO from) {
+        return new User(from.getId(), from.getName(), from.getEmail());
+    }
+
 }
