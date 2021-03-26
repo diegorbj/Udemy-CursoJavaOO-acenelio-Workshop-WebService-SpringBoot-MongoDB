@@ -1,8 +1,8 @@
 package com.myhouse.socialnetwork.domain;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.io.Serializable;
 import java.util.HashSet;
@@ -10,7 +10,6 @@ import java.util.Set;
 
 @ToString
 @NoArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Document
 public class User implements Serializable {
 
@@ -19,7 +18,7 @@ public class User implements Serializable {
     @Getter
     @Setter
     @EqualsAndHashCode.Include
-    @MongoId
+    @Id
     private String id;
 
     @Getter
@@ -38,4 +37,5 @@ public class User implements Serializable {
         this.name = name;
         this.email = email;
     }
+
 }
