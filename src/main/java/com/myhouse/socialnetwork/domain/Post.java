@@ -1,6 +1,8 @@
 package com.myhouse.socialnetwork.domain;
 
 import lombok.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -10,6 +12,7 @@ import java.util.Set;
 @ToString
 @NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Document
 public class Post implements Serializable {
 
     private final static long serialVersionUID = 1L;
@@ -17,6 +20,7 @@ public class Post implements Serializable {
     @Getter
     @Setter
     @EqualsAndHashCode.Include
+    @Id
     private String id;
 
     @Getter
