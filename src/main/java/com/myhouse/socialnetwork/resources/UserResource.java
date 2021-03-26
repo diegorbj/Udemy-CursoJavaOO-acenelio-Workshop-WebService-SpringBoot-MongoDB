@@ -3,7 +3,7 @@ package com.myhouse.socialnetwork.resources;
 import com.myhouse.socialnetwork.domain.Post;
 import com.myhouse.socialnetwork.domain.User;
 import com.myhouse.socialnetwork.dto.UserDTO;
-import com.myhouse.socialnetwork.services.UserServices;
+import com.myhouse.socialnetwork.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class UserResource {
 
     @Autowired
-    private UserServices _service;
+    private UserService _service;
 
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<List<UserDTO>> listAll() {
