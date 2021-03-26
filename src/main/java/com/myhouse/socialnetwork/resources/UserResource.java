@@ -34,12 +34,18 @@ public class UserResource {
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<UserDTO> insert(@RequestBody UserDTO obj) {
+    public ResponseEntity<Void> insert(@RequestBody UserDTO obj) {
         User newObj = _service.fromDTO(obj);
         newObj = _service.insert(newObj);
 
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable("id") String id) {
+        _service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
